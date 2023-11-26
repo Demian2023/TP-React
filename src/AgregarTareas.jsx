@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useState, useEffect } from 'react'
 import './formulario.css'
 import {v4 as uuidv4} from 'uuid'
 import ListadoTareas from './ListadoTareas'
@@ -6,7 +6,14 @@ import ListadoTareas from './ListadoTareas'
 const AgregarTareas = () =>{
 
     const [texto, setTexto]=useState("");
-    const [tareas, setTareas]=useState([])
+    const [tareas, setTareas]=useState(() => {
+        const tareasAlmacenadas = localStorage.getItem('tareasLocalStorage');
+        return tareasAlmacenadas ? JSON.parse(tareasAlmacenadas) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('tareasLocalStorage', JSON.stringify(tareas));
+      }, [tareas]);
 
     const inputChange = (e) => {
         setTexto(e.target.value)
