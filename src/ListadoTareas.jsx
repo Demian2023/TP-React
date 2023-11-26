@@ -24,17 +24,15 @@ const ListadoTareas = (props) =>{
     return (
         <>
             {props.tareas.map((tarea) => (
-                <>
-                <div className='flex'>
+                <div key={tarea.id} className='flex'>
                     <div>
-                    <li key={tarea.id} id={tarea.id} className={tarea.clase}>{tarea.texto}</li>
+                        <li id={tarea.id} className={tarea.clase}>{tarea.texto}</li>
                     </div>
                     <div>
-                    <button onClick={()=>{toggleClass(tarea.id)}} >Completada</button>
-                    <button onClick={()=>{eliminarTarea(tarea.id)}} >Eliminar</button>
+                        <button onClick={()=>{toggleClass(tarea.id)}} >Completada</button>
+                        <button onClick={()=>{eliminarTarea(tarea.id)}} >Eliminar</button>
                     </div>
                 </div>
-                </>
             ))}
         </>
     )
