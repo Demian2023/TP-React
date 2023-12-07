@@ -28,7 +28,7 @@ const TareasApp = () => {
     const toggleClass = (id) => {
         const cambiarClase = tareas.map(tarea =>{
             if (id === tarea.id) {
-                tarea.clase ? tarea.clase = "noCompletada" : tarea.clase = "completada"
+                tarea.clase ? tarea.clase = false : tarea.clase = true
             }
             return tarea;
             });

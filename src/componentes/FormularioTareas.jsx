@@ -1,6 +1,10 @@
-import '../estilos/formulario.css'
+import '../estilos/formulario.css';
 import { useState } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
 
 const FormularioTareas = ({agregarTarea}) => {
 
@@ -22,13 +26,15 @@ const FormularioTareas = ({agregarTarea}) => {
                 <div className="flex">
                     <div>
                         <h1>Lista de tareas</h1>
-                        <form onSubmit={enviarTarea}>
-                            <input type="text"
-                            placeholder='Ingresa una tarea'
+                        <form onSubmit={enviarTarea} className='centradoVertical'>
+                            <TextField
+                            required
+                            id="outlined-required"
                             value={texto}
-                            required={true}
-                            onChange={inputChange}/>
-                            <button type='submit'>Agregar tarea</button>
+                            label="Campo obligatorio"
+                            onChange={inputChange}
+                            />
+                            <Button type='submit' variant="contained">Agregar tarea</Button>
                         </form>  
                     </div>
                     
