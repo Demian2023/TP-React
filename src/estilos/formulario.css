@@ -21,6 +21,13 @@
     flex-wrap: wrap;
 }
 
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .completada {
     text-decoration: line-through;
     background-color: rgb(255, 0, 0) !important;
@@ -30,13 +37,6 @@
 .noCompletada {
     text-decoration: none;
     transition: .5s ease-in;
-}
-
-button {
-    margin-left: 10px;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease-in-out;
 }
 
 ul {
@@ -65,4 +65,21 @@ li:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
     transition-duration: .2s;
+}
+
+.lista {
+    background-color: rgb(255, 235, 235);
+    border-radius: 1em;
+    padding: 5%;
+    margin: 5%;
+    height: fit-content;
+    width: fit-content;
+    min-width: 50vw;
+    max-width: 80vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
 }
