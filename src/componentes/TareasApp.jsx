@@ -2,8 +2,7 @@ import FormularioTareas from "./FormularioTareas";
 import ListadoTareas from "./ListadoTareas";
 import ManejoTareas from "../CustomHooks/ManejoTareas";
 
-
-const TareasApp = () => {
+export const TareasApp = () => {
 
     const { tareas, agregarTarea, toggleClass, eliminarTarea } = ManejoTareas();
 
@@ -17,5 +16,3 @@ const TareasApp = () => {
         </>
      );
 }
- 
-export default TareasApp;

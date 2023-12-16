@@ -3,11 +3,7 @@ import '../estilos/formulario.css'
 import '../estilos/index.css'
 import Button from '@mui/material/Button';
 
-
-
-
-const ListadoTareas = ({tareas, toggleClass, eliminarTarea}) =>{
-
+export const ListadoTareas = ({tareas, toggleClass, eliminarTarea}) =>{
     
     return (
         <div className="lista">
@@ -31,5 +27,3 @@ ListadoTareas.propTypes = {
     toggleClass: PropTypes.func.isRequired,
     eliminarTarea: PropTypes.func.isRequired,
 };
-
-export default ListadoTareas

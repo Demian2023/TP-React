@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-
-
-const FormularioTareas = ({agregarTarea}) => {
+export const FormularioTareas = ({agregarTarea}) => {
 
     const [texto, setTexto]=useState("");
     
@@ -47,5 +45,3 @@ const FormularioTareas = ({agregarTarea}) => {
 FormularioTareas.propTypes = {
     agregarTarea: PropTypes.func.isRequired,
 };
-
-export default FormularioTareas
