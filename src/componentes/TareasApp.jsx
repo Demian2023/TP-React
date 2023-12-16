@@ -1,6 +1,6 @@
-import FormularioTareas from "./FormularioTareas";
-import ListadoTareas from "./ListadoTareas";
-import ManejoTareas from "../CustomHooks/ManejoTareas";
+import { FormularioTareas } from "./FormularioTareas";
+import { ListadoTareas } from "./ListadoTareas";
+import { ManejoTareas } from "../CustomHooks/ManejoTareas";
 
 export const TareasApp = () => {
 
@@ -12,7 +12,6 @@ export const TareasApp = () => {
             <FormularioTareas agregarTarea={agregarTarea}/>
             <ListadoTareas tareas={tareas} toggleClass={toggleClass} eliminarTarea={eliminarTarea}/>
         </div>
-           
         </>
      );
 }
