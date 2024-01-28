@@ -3,7 +3,7 @@ import '../estilos/formulario.css'
 import '../estilos/index.css'
 import Button from '@mui/material/Button';
 
-export const ListadoTareas = ({tareas, toggleClass, eliminarTarea}) =>{
+export const ListadoTareas = ({tareas, toggleClass, eliminarTarea, editarTarea}) =>{
     
     return (
         <div className="lista">
@@ -14,6 +14,7 @@ export const ListadoTareas = ({tareas, toggleClass, eliminarTarea}) =>{
                     </div>
                     <div>
                         <Button variant="outlined" onClick={()=>{toggleClass(tarea.id)}} > {tarea.clase === false ? "Marcar como completa" : "Desmarcar"}</Button >
+                        <Button variant="outlined" onClick={()=>{editarTarea(tarea.id)}} >Editar</Button >
                         <Button variant="outlined" onClick={()=>{eliminarTarea(tarea.id)}} >Eliminar</Button >
                     </div>
                 </div>
@@ -26,4 +27,5 @@ ListadoTareas.propTypes = {
     tareas: PropTypes.array.isRequired,
     toggleClass: PropTypes.func.isRequired,
     eliminarTarea: PropTypes.func.isRequired,
+    editarTarea: PropTypes.func.isRequired,
 };

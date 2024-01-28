@@ -4,13 +4,13 @@ import { ManejoTareas } from "../CustomHooks/ManejoTareas";
 
 export const TareasApp = () => {
 
-    const { tareas, agregarTarea, toggleClass, eliminarTarea } = ManejoTareas();
+    const { tareas, agregarTarea, toggleClass, eliminarTarea, editarTarea } = ManejoTareas();
 
     return ( 
         <>
         <div className="flexCenter">
             <FormularioTareas agregarTarea={agregarTarea}/>
-            <ListadoTareas tareas={tareas} toggleClass={toggleClass} eliminarTarea={eliminarTarea}/>
+            <ListadoTareas tareas={tareas} toggleClass={toggleClass} eliminarTarea={eliminarTarea} editarTarea={editarTarea}/>
         </div>
         </>
      );

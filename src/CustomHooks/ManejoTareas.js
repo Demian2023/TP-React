@@ -37,5 +37,17 @@ export const ManejoTareas = () => {
         setTareas(tareasBorradas);
     }
 
-    return ({ tareas, agregarTarea, toggleClass, eliminarTarea });
+    const editarTarea = (id) => {
+        const tareasEditadas = [...tareas];
+
+        // agregar modal para cambiar el texto
+
+        tareasEditadas.map((tarea) => {
+            if (id === tarea.id) {
+                console.log("tarea encontrada id: " + id)
+            }
+        })
+    }
+
+    return ({ tareas, agregarTarea, toggleClass, eliminarTarea, editarTarea });
 }
