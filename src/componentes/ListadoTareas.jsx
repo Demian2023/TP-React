@@ -15,7 +15,7 @@ export const ListadoTareas = ({tareas, toggleClass, eliminarTarea, abrirModalEdi
                     <div>
                         <Button variant="outlined" onClick={()=>{toggleClass(tarea.id)}} > {tarea.clase === false ? "Marcar como completa" : "Desmarcar"}</Button >
                         <Button variant="outlined" onClick={()=>{abrirModalEditar(tarea.id, tarea.texto)}} >Editar</Button >
-                        <Button variant="outlined" onClick={()=>{eliminarTarea(tarea.id)}} >Eliminar</Button >
+                        <Button variant="outlined" className="eliminar" onClick={()=>{eliminarTarea(tarea.id)}} >Eliminar</Button >
                     </div>
                 </div>
             ))}

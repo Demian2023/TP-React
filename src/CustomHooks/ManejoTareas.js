@@ -33,8 +33,12 @@ export const ManejoTareas = () => {
     };
 
     const eliminarTarea = (id) => {
-        const tareasBorradas = tareas.filter(tarea => tarea.id !== id);
-        setTareas(tareasBorradas);
+        const confirmDelete = window.confirm("¿Seguro que desea borrar?");
+
+        if (confirmDelete) {
+            const tareasBorradas = tareas.filter(tarea => tarea.id !== id);
+            setTareas(tareasBorradas);
+        }
     }
 
     const [modalEditar, setModalEditar] = useState(false);
