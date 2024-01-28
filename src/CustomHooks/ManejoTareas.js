@@ -37,17 +37,29 @@ export const ManejoTareas = () => {
         setTareas(tareasBorradas);
     }
 
-    const editarTarea = (id) => {
-        const tareasEditadas = [...tareas];
+    const [modalEditar, setModalEditar] = useState(false);
+    const [idEditar, setIdEditar] = useState("");
+    const [textoAEditar, setTextoAEditar] = useState("");
 
-        // agregar modal para cambiar el texto
-
-        tareasEditadas.map((tarea) => {
-            if (id === tarea.id) {
-                console.log("tarea encontrada id: " + id)
-            }
-        })
+    const abrirModalEditar = (id, txt) => {
+        setIdEditar(id);
+        setTextoAEditar(txt);
+        setModalEditar(true);
     }
 
-    return ({ tareas, agregarTarea, toggleClass, eliminarTarea, editarTarea });
+    const editar = (txt) => {
+        const tareasEditadas = [...tareas];
+        tareasEditadas.map((tarea) => {
+            if (idEditar === tarea.id) {
+                tarea.texto = txt;
+            }
+        })
+        setTareas(tareasEditadas);
+        setModalEditar(false);
+
+    }
+
+
+
+    return ({ tareas, agregarTarea, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
 }
