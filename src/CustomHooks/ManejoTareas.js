@@ -50,6 +50,35 @@ export const ManejoTareas = () => {
         setNombreListaMostrar(e)
     }
 
+    const [modalEditarTitulo, setModalEditarTitulo] = useState(false);
+    const [tituloAnterior, setTituloAnterior] = useState("");
+
+    const abrirModalEditarTitulo = (titulo) => {
+        setTituloAnterior(titulo);
+        setModalEditarTitulo(true);
+    }
+
+    const editarTitulo = (tituloNuevo) => {
+        const tareasAlmacenadas = [...tareas]
+        tareasAlmacenadas.map((tarea) => {
+            if (tituloAnterior == tarea.titulo) {
+                tarea.titulo = tituloNuevo
+            }
+        })
+        setTareas(tareasAlmacenadas);
+        setModalEditarTitulo(false);
+    }
+
+    const eliminarTitulo = (tituloEliminar) => {
+        const confirmDelete = window.confirm("¿Seguro que desea eliminar lista?");
+
+        if (confirmDelete) {
+            const eliminarLista = tareas.filter(tarea => tarea.titulo !== tituloEliminar);
+            setTareas(eliminarLista);
+        }
+    }
+
+
     const toggleClass = (id) => {
         const cambiarClase = tareas.map(tarea => {
             if (id === tarea.tarea.id) {
@@ -89,5 +118,5 @@ export const ManejoTareas = () => {
         setTareas(tareasEditadas);
         setModalEditar(false);
     }
-    return ({ tareas, agregarTarea, nombreLista, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
+    return ({ tareas, agregarTarea, nombreLista, editarTitulo, abrirModalEditarTitulo, modalEditarTitulo, setModalEditarTitulo, tituloAnterior, eliminarTitulo, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
 }

@@ -29,7 +29,6 @@ export const FormularioTareas = ({agregarTarea}) => {
     }
 
     useEffect(() => {
-        console.log("switchDisplay usado");
         booleanRef ? inputRef1.current.focus() :
         inputRef2.current.focus()
     }, [switchDisplay, booleanRef]);

@@ -44,6 +44,7 @@ h1 {
 
 Button {
     margin: 20px !important;
+    min-width: fit-content !important;
 }
 
 @media (prefers-color-scheme: light) {
