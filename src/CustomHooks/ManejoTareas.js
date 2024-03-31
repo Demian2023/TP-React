@@ -12,20 +12,48 @@ export const ManejoTareas = () => {
         localStorage.setItem('tareasLocalStorage', JSON.stringify(tareas));
     }, [tareas]);
 
-    const agregarTarea = (tarea) => {
-
+    const agregarTarea = (titulo, tarea) => {
+        const listas = [...tareas]
         const tareaNueva = {
-            id: uuidv4(),
-            texto: tarea,
-            clase: false,
+            titulo: titulo,
+            tarea: [{
+                id: uuidv4(),
+                texto: tarea,
+                clase: false,
+            }]
+        };
+        if (listas.length < 1) {
+            setTareas([...tareas, tareaNueva]);
+        } else {
+            listas.map((lista) => {
+                if (lista.titulo == titulo) {
+                    console.log("lista con mismo titulo")
+                    const agregarTarea = {
+                        id: uuidv4(),
+                        texto: tarea,
+                        clase: false,
+                    }
+                    lista.tarea.push(agregarTarea)
+                    setTareas(listas)
+                    console.log(listas)
+                } else {
+                    console.log("lista primera subida")
+                    setTareas([...tareas, tareaNueva]);
+                }
+            })
         }
-        setTareas([...tareas, tareaNueva]);
     };
+
+    const [nombreListaMostrar, setNombreListaMostrar] = useState("");
+
+    const nombreLista = (e) => {
+        setNombreListaMostrar(e)
+    }
 
     const toggleClass = (id) => {
         const cambiarClase = tareas.map(tarea => {
-            if (id === tarea.id) {
-                tarea.clase ? tarea.clase = false : tarea.clase = true
+            if (id === tarea.tarea.id) {
+                tarea.tarea.clase ? tarea.tarea.clase = false : tarea.tarea.clase = true
             }
             return tarea;
         });
@@ -36,7 +64,7 @@ export const ManejoTareas = () => {
         const confirmDelete = window.confirm("¿Seguro que desea borrar?");
 
         if (confirmDelete) {
-            const tareasBorradas = tareas.filter(tarea => tarea.id !== id);
+            const tareasBorradas = tareas.filter(tarea => tarea.tarea.id !== id);
             setTareas(tareasBorradas);
         }
     }
@@ -54,16 +82,12 @@ export const ManejoTareas = () => {
     const editar = (txt) => {
         const tareasEditadas = [...tareas];
         tareasEditadas.map((tarea) => {
-            if (idEditar === tarea.id) {
-                tarea.texto = txt;
+            if (idEditar === tarea.tarea.id) {
+                tarea.tarea.texto = txt;
             }
         })
         setTareas(tareasEditadas);
         setModalEditar(false);
-
     }
-
-
-
-    return ({ tareas, agregarTarea, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
+    return ({ tareas, agregarTarea, nombreLista, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
 }

@@ -2,7 +2,7 @@
     background-color: rgb(250, 250, 250);
     border-radius: 1em;
     padding: 5%;
-    margin: 5%;
+    margin: 2.5%;
     height: fit-content;
     width: fit-content;
     min-width: 50vw;
@@ -71,7 +71,7 @@ li:hover {
     background-color: rgb(250, 250, 250);
     border-radius: 1em;
     padding: 5%;
-    margin: 5%;
+    margin: 2.5%;
     height: fit-content;
     width: fit-content;
     min-width: 50vw;
@@ -82,6 +82,21 @@ li:hover {
     justify-content: center;
     text-align: center;
     flex-direction: column;
+}
+
+.contenedorListas {
+    width: 420px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
+
+.mostrar {
+    display: block;
 }
 
 .eliminar:hover {
