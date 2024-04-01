@@ -78,7 +78,6 @@ export const ManejoTareas = () => {
         }
     }
 
-
     const toggleClass = (titulo, id) => {
         const cambiarClase = tareas.map((lista) => {
             lista.titulo == titulo && (
@@ -140,5 +139,52 @@ export const ManejoTareas = () => {
         setTareas(tareasEditadas);
         setModalEditar(false);
     }
-    return ({ tareas, agregarTarea, nombreLista, editarTitulo, abrirModalEditarTitulo, modalEditarTitulo, setModalEditarTitulo, tituloAnterior, eliminarTitulo, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, modalEditar, setModalEditar, editar, textoAEditar });
+
+    const [modalAgregarTareaALista, setModalAgregarTareaALista] = useState(false);
+    const [tituloTareaALista, setTituloTareaALista] = useState("");
+
+    const abrirModalEditarLista = (titulo) => {
+        setTituloTareaALista(titulo)
+        setModalAgregarTareaALista(true)
+    }
+
+    const agregarTareaALista = (tareaNuevaALista) => {
+        const agregarTarea = [...tareas];
+        agregarTarea.forEach((lista) => {
+            if (tituloTareaALista === lista.titulo) {
+                lista.tarea.push({
+                    id: uuidv4(),
+                    texto: tareaNuevaALista,
+                    clase: false,
+                });
+            }
+        });
+        setTareas(agregarTarea);
+        setModalAgregarTareaALista(false);
+    };
+
+    return ({
+        tareas,
+        agregarTarea,
+        nombreLista,
+        editarTitulo,
+        abrirModalEditarTitulo,
+        modalEditarTitulo,
+        setModalEditarTitulo,
+        tituloAnterior,
+        eliminarTitulo,
+        nombreListaMostrar,
+        toggleClass,
+        eliminarTarea,
+        abrirModalEditar,
+        modalEditar,
+        setModalEditar,
+        editar,
+        textoAEditar,
+        abrirModalEditarLista,
+        agregarTareaALista,
+        modalAgregarTareaALista,
+        setModalAgregarTareaALista,
+        tituloTareaALista
+    });
 }
