@@ -66,19 +66,23 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
                             <h2>{tituloLista}</h2>
                         </div>
                         <form onSubmit={cambiarDisplay}>
-                            <div className={switchDisplay ? "mostrar" : "hide"}>
-                                <TextField
-                                required
-                                inputRef={inputRef1}
-                                id="outlined-required"
-                                value={titulo}
-                                label="Campo obligatorio"
-                                onChange={handleTituloChange}
-                                error={error.vacio || error.duplicado}
-                                helperText={error.vacio ? 'El título no puede estar vacío' : 
-                                error.duplicado ? "El título está duplicado" : ''}
-                                style={{margin: "10px"}}/>
-                                <Button type="submit" variant="contained">Crear listado</Button>
+                            <div className={switchDisplay ? "mostrar" : "hide"} >
+                                <div>
+                                    <TextField
+                                    required
+                                    inputRef={inputRef1}
+                                    id="outlined-required"
+                                    value={titulo}
+                                    label="Campo obligatorio"
+                                    onChange={handleTituloChange}
+                                    error={error.vacio || error.duplicado}
+                                    helperText={error.vacio ? 'El título no puede estar vacío' : 
+                                    error.duplicado ? "El título está duplicado" : ''}
+                                    style={{margin: "10px"}}/>
+                                </div>
+                                <div>
+                                    <Button type="submit" variant="contained">Crear listado</Button>
+                                </div>
                             </div>
                         </form>
                         <form onSubmit={enviarTarea}>

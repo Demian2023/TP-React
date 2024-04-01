@@ -7,11 +7,14 @@ export const ListadoTareas = ({tareas, nombreListaMostrar, toggleClass, eliminar
 
     return (
         <div className="lista">
-            <h2>{nombreListaMostrar}</h2>
-            {nombreListaMostrar && 
-            <div>
-                <Button variant="outlined" onClick={() => {abrirModalEditarLista(nombreListaMostrar)}}>Agregar tarea</Button >
-            </div>}
+            <div className="flexCenter">
+                <h2 style={{width: "fit-content"}}>{nombreListaMostrar}</h2>
+                {nombreListaMostrar && 
+                <div style={{width: "fit-content"}}>
+                    <Button variant="outlined" onClick={() => {abrirModalEditarLista(nombreListaMostrar)}}>Agregar tarea</Button >
+                </div>}
+            </div>
+            
             
            {tareas.map((lista) => (
                 lista.titulo === nombreListaMostrar && (

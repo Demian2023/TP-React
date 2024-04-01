@@ -80,14 +80,15 @@ li:hover {
     transition: box-shadow 0.3s ease-in-out;
     display: flex;
     justify-content: center;
-    text-align: center;
     flex-direction: column;
 }
 
 .contenedorListas {
-    width: 420px;
-    height: 75px;
+    width: fit-content;
+    height: fit-content;
+    min-height: 75px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -96,7 +97,8 @@ li:hover {
 }
 
 .mostrar {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .eliminar:hover {

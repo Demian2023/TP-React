@@ -15,7 +15,7 @@ return (
                 <h1>Listado Listas:</h1>
                 <ul>
                     {listas.map((lista, index)=>(
-                        <div  key={index} style={{display: "flex", justifyContent: "space-between"}}>
+                        <div  key={index} style={{display: "flex", flexWrap: "wrap"}}>
                             <li style={{width: "100%", marginLeft: "20px"}}onClick={mostrar}>
                                 {lista.titulo}
                             </li>

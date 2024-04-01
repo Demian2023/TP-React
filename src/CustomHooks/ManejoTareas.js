@@ -90,7 +90,6 @@ export const ManejoTareas = () => {
             )
             return lista;
         })
-        console.log(cambiarClase)
         setTareas(cambiarClase);
     };
 

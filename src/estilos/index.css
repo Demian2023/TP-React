@@ -47,6 +47,10 @@ Button {
     min-width: fit-content !important;
 }
 
+input {
+    width: 180px !important;
+}
+
 @media (prefers-color-scheme: light) {
      :root {
         color: #213547;
