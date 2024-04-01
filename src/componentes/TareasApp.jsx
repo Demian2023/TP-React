@@ -13,7 +13,7 @@ export const TareasApp = () => {
     return ( 
         <>
         <div className="flexCenter">
-            <FormularioTareas agregarTarea={agregarTarea}/>
+            <FormularioTareas agregarTarea={agregarTarea} tareas={tareas}/>
             <ListadoListas listas={tareas} nombreLista={nombreLista} editar={abrirModalEditarTitulo} eliminarTitulo={eliminarTitulo}/>
             <ListadoTareas tareas={tareas} nombreListaMostrar={nombreListaMostrar} toggleClass={toggleClass} eliminarTarea={eliminarTarea} abrirModalEditar={abrirModalEditar}/>
             <Modal modalVisible={modalEditar} setModalVisible={setModalEditar} contenido={<ContenidoModalEditar editar={editar} textoAnterior={textoAEditar}/>}/>

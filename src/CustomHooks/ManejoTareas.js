@@ -79,21 +79,37 @@ export const ManejoTareas = () => {
     }
 
 
-    const toggleClass = (id) => {
-        const cambiarClase = tareas.map(tarea => {
-            if (id === tarea.tarea.id) {
-                tarea.tarea.clase ? tarea.tarea.clase = false : tarea.tarea.clase = true
-            }
-            return tarea;
-        });
+    const toggleClass = (titulo, id) => {
+        const cambiarClase = tareas.map((lista) => {
+            lista.titulo == titulo && (
+                lista.tarea.map((tarea) => {
+                    if (id === tarea.id) {
+                        tarea.clase = !tarea.clase;
+                    }
+                    return tarea;
+                })
+            )
+            return lista;
+        })
+        console.log(cambiarClase)
         setTareas(cambiarClase);
     };
 
-    const eliminarTarea = (id) => {
+    const eliminarTarea = (titulo, id) => {
+        console.log(titulo, id)
         const confirmDelete = window.confirm("¿Seguro que desea borrar?");
 
         if (confirmDelete) {
-            const tareasBorradas = tareas.filter(tarea => tarea.tarea.id !== id);
+            const tareasBorradas = tareas.map((lista) => {
+                if (lista.titulo === titulo) {
+                    const nuevasTareas = lista.tarea.filter(tarea => tarea.id !== id);
+                    return {...lista, tarea: nuevasTareas };
+                }
+                return lista;
+            })
+
+            console.log(tareasBorradas)
+                // const tareasBorradas = tareas.filter(tarea => tarea.tarea.id !== id);
             setTareas(tareasBorradas);
         }
     }
@@ -101,8 +117,10 @@ export const ManejoTareas = () => {
     const [modalEditar, setModalEditar] = useState(false);
     const [idEditar, setIdEditar] = useState("");
     const [textoAEditar, setTextoAEditar] = useState("");
+    const [titulo, setTitulo] = useState("");
 
-    const abrirModalEditar = (id, txt) => {
+    const abrirModalEditar = (titulo, id, txt) => {
+        setTitulo(titulo);
         setIdEditar(id);
         setTextoAEditar(txt);
         setModalEditar(true);
@@ -110,10 +128,14 @@ export const ManejoTareas = () => {
 
     const editar = (txt) => {
         const tareasEditadas = [...tareas];
-        tareasEditadas.map((tarea) => {
-            if (idEditar === tarea.tarea.id) {
-                tarea.tarea.texto = txt;
-            }
+        tareasEditadas.map((lista) => {
+            titulo == lista.titulo && (
+                lista.tarea.map((tarea) => {
+                    if (idEditar === tarea.id) {
+                        tarea.texto = txt;
+                    }
+                })
+            )
         })
         setTareas(tareasEditadas);
         setModalEditar(false);

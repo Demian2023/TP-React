@@ -4,22 +4,25 @@ import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export const FormularioTareas = ({agregarTarea}) => {
+export const FormularioTareas = ({agregarTarea, tareas}) => {
 
     const [titulo, setTitulo]=useState("");
     const [tituloLista, setTituloLista] = useState("");
     const [texto, setTexto]=useState("");
     const [switchDisplay, setSwitchDisplay] = useState(true);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({ vacio: false, duplicado: false });
     const [booleanRef, setBooleanRef] = useState(true);
     const inputRef1 = useRef(null);
     const inputRef2 = useRef(null);
 
     const cambiarDisplay = (e) => {
         e.preventDefault();
+        const tituloRepetido = tareas.find(tarea => tarea.titulo.toLowerCase() === titulo.toLowerCase())
         const inputValue = titulo.trim()
         if (inputValue === '') {
-            setError(true);
+            setError({vacio: true, duplicado: false});
+        } else if (tituloRepetido){
+            setError({vacio: false, duplicado: true});
         } else {
             setSwitchDisplay(!switchDisplay)
             setBooleanRef(!booleanRef)
@@ -71,8 +74,9 @@ export const FormularioTareas = ({agregarTarea}) => {
                                 value={titulo}
                                 label="Campo obligatorio"
                                 onChange={handleTituloChange}
-                                error={error}
-                                helperText={error ? 'El título no puede estar vacío' : ''}
+                                error={error.vacio || error.duplicado}
+                                helperText={error.vacio ? 'El título no puede estar vacío' : 
+                                error.duplicado ? "El título está duplicado" : ''}
                                 style={{margin: "10px"}}/>
                                 <Button type="submit" variant="contained">Crear listado</Button>
                             </div>
@@ -106,4 +110,5 @@ export const FormularioTareas = ({agregarTarea}) => {
 
 FormularioTareas.propTypes = {
     agregarTarea: PropTypes.func.isRequired,
+    tareas: PropTypes.array.isRequired,
 };
