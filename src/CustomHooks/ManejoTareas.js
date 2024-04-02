@@ -27,7 +27,6 @@ export const ManejoTareas = () => {
         } else {
             listas.map((lista) => {
                 if (lista.titulo == titulo) {
-                    console.log("lista con mismo titulo")
                     const agregarTarea = {
                         id: uuidv4(),
                         texto: tarea,
@@ -37,7 +36,6 @@ export const ManejoTareas = () => {
                     setTareas(listas)
                     console.log(listas)
                 } else {
-                    console.log("lista primera subida")
                     setTareas([...tareas, tareaNueva]);
                 }
             })

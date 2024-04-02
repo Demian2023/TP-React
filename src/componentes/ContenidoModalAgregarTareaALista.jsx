@@ -31,7 +31,7 @@ return (
                     label="Campo obligatorio"
                     onChange={inputChange}
                     />
-                    <Button type='submit' variant="contained">Cambiar</Button>
+                    <Button type='submit' variant="contained">Agregar tarea</Button>
                 </form>  
             </div>
         </div>

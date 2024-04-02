@@ -21,7 +21,6 @@ return (
                             </li>
                             <Button variant="outlined" onClick={() => {editar(lista.titulo)}}>Cambiar nombre</Button >
                             <Button variant="outlined" className="eliminar" onClick={()=>{eliminarTitulo(lista.titulo)}}>Eliminar</Button >
-
                         </div>
                     ))}
                 </ul>  
