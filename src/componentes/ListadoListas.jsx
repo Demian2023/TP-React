@@ -29,13 +29,13 @@ return (
                 >
                     <h1>Listado Listas:</h1>
                     <ul>
-                    <SortableContext
-                        items={listas}
-                        strategy={verticalListSortingStrategy}
-                    >
-                        {listas.map((user) => (
-                            <Lista key={user.id} user={user} nombreLista={nombreLista} editar={editar} eliminarTitulo={eliminarTitulo} />
-                        ))}
+                        <SortableContext
+                            items={listas}
+                            strategy={verticalListSortingStrategy}
+                        >
+                            {listas.map((user) => (
+                                <Lista key={user.id} user={user} nombreLista={nombreLista} editar={editar} eliminarTitulo={eliminarTitulo} />
+                            ))}
                         </SortableContext>
                     </ul>  
                 </DndContext>
