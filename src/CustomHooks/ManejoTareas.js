@@ -15,6 +15,7 @@ export const ManejoTareas = () => {
     const agregarTarea = (titulo, tarea) => {
         const listas = [...tareas]
         const tareaNueva = {
+            id: tareas.length + 1,
             titulo: titulo,
             tarea: [{
                 id: uuidv4(),
@@ -182,6 +183,7 @@ export const ManejoTareas = () => {
         agregarTareaALista,
         modalAgregarTareaALista,
         setModalAgregarTareaALista,
-        tituloTareaALista
+        tituloTareaALista,
+        setTareas
     });
 }
