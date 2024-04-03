@@ -27,7 +27,7 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
             setSwitchDisplay(!switchDisplay)
             setBooleanRef(!booleanRef)
             setTituloLista(titulo)
-            setError(false)
+            setError({ vacio: false, duplicado: false })
         }
     }
 
@@ -48,11 +48,11 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
         e.preventDefault();
         const inputValueTarea = texto.trim();
          if (inputValueTarea === '') {
-             setError(true);
+             setError({ vacio: true, duplicado: false });
          } else {
             agregarTarea(titulo, texto);
             setTexto("");
-            setError(false);
+            setError({ vacio: false, duplicado: false });
          }
     }
 
@@ -95,7 +95,7 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
                                     value={texto}
                                     label="Campo obligatorio" 
                                     onChange={handleTextoChange}
-                                    error={error}
+                                    error={error.vacio}
                                     helperText={error ? 'El título no puede estar vacío' : ''}
                                     style={{margin: "10px"}}/>
                                     <Button type='submit' variant="contained">Agregar tarea</Button>

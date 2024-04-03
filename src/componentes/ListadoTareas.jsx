@@ -2,8 +2,34 @@ import PropTypes from 'prop-types'
 import '../estilos/formulario.css'
 import '../estilos/index.css'
 import Button from '@mui/material/Button';
+import Tarea from './Tarea';
 
-export const ListadoTareas = ({tareas, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, abrirModalEditarLista}) =>{
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
+
+
+export const ListadoTareas = ({tareas, setTareas, nombreListaMostrar, toggleClass, eliminarTarea, abrirModalEditar, abrirModalEditarLista}) =>{
+
+   
+    
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
+
+        const parteTareas = tareas.find(lista => lista.titulo === nombreListaMostrar)?.tarea || [];
+
+        const oldIndex = parteTareas.findIndex((tarea) => tarea.id === active.id);
+        const newIndex = parteTareas.findIndex((tarea) => tarea.id === over.id);
+
+        const nuevasTareas= arrayMove(parteTareas, oldIndex, newIndex);
+
+        setTareas(tareas.map((lista)=>{
+            if (lista.titulo == nombreListaMostrar) {
+                return { ...lista, tarea: nuevasTareas };
+            }
+            return lista;
+        }))
+      };
+
 
     return (
         <div className="lista">
@@ -14,22 +40,22 @@ export const ListadoTareas = ({tareas, nombreListaMostrar, toggleClass, eliminar
                     <Button variant="outlined" onClick={() => {abrirModalEditarLista(nombreListaMostrar)}}>Agregar tarea</Button >
                 </div>}
             </div>
-            
-            
-           {tareas.map((lista) => (
+           
+            {tareas.map((lista, index) => (
                 lista.titulo === nombreListaMostrar && (
-                    lista.tarea.map((tarea, index) => (
-                        <div key={index}>
-                            <div>
-                                <li id={tarea.id} className={tarea.clase === false ? "noCompletada" : "completada"}>{tarea.texto}</li>
-                            </div>
-                            <div>
-                                <Button variant="outlined" onClick={()=>{toggleClass(lista.titulo, tarea.id)}} > {tarea.clase === false ? "Marcar como completa" : "Desmarcar"}</Button >
-                                <Button variant="outlined" onClick={()=>{abrirModalEditar(lista.titulo, tarea.id, tarea.texto)}} >Editar</Button >
-                                <Button variant="outlined" className="eliminar" onClick={()=>{eliminarTarea(lista.titulo, tarea.id)}} >Eliminar</Button >
-                            </div>
-                        </div>
-                    ))
+                    <DndContext
+                    collisionDetection={closestCenter}
+                    onDragEnd={handleDragEnd}
+                    key={index}>
+                        <SortableContext
+                            items={lista.tarea}
+                            strategy={verticalListSortingStrategy}
+                        >
+                            {lista.tarea.map((tarea) => (
+                                <Tarea key={tarea.id} user={tarea} toggleClass={toggleClass} eliminarTarea={eliminarTarea} abrirModalEditar={abrirModalEditar} lista={lista}/>
+                            ))}
+                        </SortableContext>
+                    </DndContext>
                 )
             ))}
         </div>
@@ -43,4 +69,5 @@ ListadoTareas.propTypes = {
     eliminarTarea: PropTypes.func.isRequired,
     abrirModalEditar: PropTypes.func.isRequired,
     abrirModalEditarLista: PropTypes.func.isRequired,
+    setTareas: PropTypes.func.isRequired,
 };

@@ -4,16 +4,16 @@ import Lista from './Lista';
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
 
-export const ListadoListas = ({listas, setTareas, nombreLista, editar, eliminarTitulo}) => {
+export const ListadoListas = ({tareas, setTareas, nombreLista, editar, eliminarTitulo}) => {
    
     const handleDragEnd = (event) => {
         const { active, over } = event;
-    
-        if (!active.id !== over.id) {
+        
+        if (active.id !== over.id) {
           setTareas((titulos) => {
             const oldIndex = titulos.findIndex((titulo) => titulo.id === active.id);
             const newIndex = titulos.findIndex((titulo) => titulo.id === over.id);
-    
+
             return arrayMove(titulos, oldIndex, newIndex);
           });
         }
@@ -30,10 +30,10 @@ return (
                     <h1>Listado Listas:</h1>
                     <ul>
                         <SortableContext
-                            items={listas}
+                            items={tareas}
                             strategy={verticalListSortingStrategy}
                         >
-                            {listas.map((user) => (
+                            {tareas.map((user) => (
                                 <Lista key={user.id} user={user} nombreLista={nombreLista} editar={editar} eliminarTitulo={eliminarTitulo} />
                             ))}
                         </SortableContext>
@@ -46,7 +46,7 @@ return (
 }
 
 ListadoListas.propTypes = {
-    listas: PropTypes.array.isRequired,
+    tareas: PropTypes.array.isRequired,
     nombreLista: PropTypes.func.isRequired,
     eliminarTitulo: PropTypes.func.isRequired,
     editar: PropTypes.func.isRequired,

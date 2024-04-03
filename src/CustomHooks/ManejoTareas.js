@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid'
 
 export const ManejoTareas = () => {
 
@@ -18,7 +17,7 @@ export const ManejoTareas = () => {
             id: tareas.length + 1,
             titulo: titulo,
             tarea: [{
-                id: uuidv4(),
+                id: tareas.tarea ? tareas.tarea.length + 1 : 1,
                 texto: tarea,
                 clase: false,
             }]
@@ -28,8 +27,10 @@ export const ManejoTareas = () => {
         } else {
             listas.map((lista) => {
                 if (lista.titulo == titulo) {
+                    const numTareas = lista.tarea.length
+                    console.log(numTareas)
                     const agregarTarea = {
-                        id: uuidv4(),
+                        id: numTareas + 1,
                         texto: tarea,
                         clase: false,
                     }
@@ -150,8 +151,9 @@ export const ManejoTareas = () => {
         const agregarTarea = [...tareas];
         agregarTarea.forEach((lista) => {
             if (tituloTareaALista === lista.titulo) {
+                const numTareas = lista.tarea.length
                 lista.tarea.push({
-                    id: uuidv4(),
+                    id: numTareas + 1,
                     texto: tareaNuevaALista,
                     clase: false,
                 });

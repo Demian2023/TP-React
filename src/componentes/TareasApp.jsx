@@ -16,8 +16,8 @@ export const TareasApp = () => {
         <>
         <div className="flexCenter">
             <FormularioTareas agregarTarea={agregarTarea} tareas={tareas}/>
-            <ListadoListas listas={tareas} setTareas={setTareas} nombreLista={nombreLista} editar={abrirModalEditarTitulo} eliminarTitulo={eliminarTitulo}/>
-            <ListadoTareas tareas={tareas} nombreListaMostrar={nombreListaMostrar} toggleClass={toggleClass} eliminarTarea={eliminarTarea} abrirModalEditar={abrirModalEditar} abrirModalEditarLista={abrirModalEditarLista}/>
+            <ListadoListas tareas={tareas} setTareas={setTareas} nombreLista={nombreLista} editar={abrirModalEditarTitulo} eliminarTitulo={eliminarTitulo}/>
+            <ListadoTareas tareas={tareas} setTareas={setTareas} nombreListaMostrar={nombreListaMostrar} toggleClass={toggleClass} eliminarTarea={eliminarTarea} abrirModalEditar={abrirModalEditar} abrirModalEditarLista={abrirModalEditarLista}/>
             <Modal modalVisible={modalEditar} setModalVisible={setModalEditar} contenido={<ContenidoModalEditar editar={editar} textoAnterior={textoAEditar}/>}/>
             <Modal modalVisible={modalEditarTitulo} setModalVisible={setModalEditarTitulo} contenido={<ContenidoModalEditarTitulo editar={editarTitulo} textoAnterior={tituloAnterior}/>}/>
             <Modal modalVisible={modalAgregarTareaALista} setModalVisible={setModalAgregarTareaALista} contenido={<ContenidoModalAgregarTareaALista editar={agregarTareaALista} titulo={tituloTareaALista}/>}/>

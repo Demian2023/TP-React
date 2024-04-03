@@ -38,7 +38,6 @@ function Lista({ user, nombreLista, editar, eliminarTitulo }) {
                     </Button >
                 </div>
             </div>
-           
         </div>
     </div>
   );
