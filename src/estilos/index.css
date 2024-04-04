@@ -63,3 +63,15 @@ input {
         background-color: #f9f9f9;
     }
 }
+
+@media (max-width: 767px) {
+    Button {
+        margin: 5px !important;
+        padding: 2px 5px !important;
+        min-height: fit-content;
+        height: 25px;
+    }
+    div li {
+        margin-left: 0 !important;
+    }
+}
