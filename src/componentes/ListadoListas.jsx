@@ -27,7 +27,7 @@ return (
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
                 >
-                    <h1>Listado Listas:</h1>
+                    <h1>Listas:</h1>
                     <ul>
                         <SortableContext
                             items={tareas}
