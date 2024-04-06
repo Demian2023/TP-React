@@ -31,6 +31,11 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
         }
     }
 
+    const volverAtras = (e) => {
+        e.preventDefault();
+        setSwitchDisplay(!switchDisplay)
+    }
+
     useEffect(() => {
         booleanRef ? inputRef1.current.focus() :
         inputRef2.current.focus()
@@ -96,13 +101,13 @@ export const FormularioTareas = ({agregarTarea, tareas}) => {
                                     label="Campo obligatorio" 
                                     onChange={handleTextoChange}
                                     error={error.vacio}
-                                    helperText={error ? 'El título no puede estar vacío' : ''}
+                                    helperText={error.vacio ? 'El título no puede estar vacío' : ''}
                                     style={{margin: "10px"}}/>
                                     <Button type='submit' variant="contained">Agregar tarea</Button>
                                 </div>
                             </div>
                             <div className={switchDisplay ? "hide" : "mostrar"}>
-                                <Button variant="contained" onClick={cambiarDisplay}>← Volver atrás</Button>
+                                <Button variant="contained" onClick={volverAtras}>← Volver atrás</Button>
                             </div>
                         </form>  
                     </div>
